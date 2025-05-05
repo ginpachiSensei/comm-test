@@ -7,7 +7,7 @@ const port = 3000;
 
 app.use(express.json());
 
-initializeRabbit(); // must happen before publishing
+initializeRabbit().then(() => console.log("RabbitMQ initialised")); // must happen before publishing
 const publisher = getPublisher();
 
 app.post("/publish", async (req: Request, res: Response) => {
